@@ -1,20 +1,20 @@
-ClassicEditor
-	.create( document.querySelector( '.editor' ), {
-		// Editor configuration.
-	} )
-	.then( editor => {
-		window.editor = editor;
-	} )
-	.catch( handleSampleError );
+(async () => {
+	const editorId = 'news_bodyhtml';
+	await ClassicEditor
+    .create(document.querySelector('.editor'), {
+        language: 'vi',
+		simpleUpload: {
+			uploadUrl: '/ckeditor/ckeditor5-online-build/test/upload.php',
+			withCredentials: true,
+		}
+    })
+    .then(editor => {
+		window.nveditor = window.nveditor || [];
+        window.nveditor[editorId] = editor;
+    })
+    .catch(error => {
+		console.error(error);
+	});
 
-function handleSampleError( error ) {
-	const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
-
-	const message = [
-		'Oops, something went wrong!',
-		`Please, report the following error on ${ issueUrl } with the build id "hd40rgqf64i1-p36n1iyr3dun" and the error stack trace:`
-	].join( '\n' );
-
-	console.error( message );
-	console.error( error );
-}
+	console.log(window.nveditor);
+})();

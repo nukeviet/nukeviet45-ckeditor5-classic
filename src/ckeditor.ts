@@ -23,7 +23,7 @@ import type { EditorConfig } from '@ckeditor/ckeditor5-core';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
 import { FontBackgroundColor, FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
-import { Heading, Title } from '@ckeditor/ckeditor5-heading';
+import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import {
@@ -66,7 +66,7 @@ import {
 	SpecialCharactersMathematical,
 	SpecialCharactersText
 } from '@ckeditor/ckeditor5-special-characters';
-import { Style } from '@ckeditor/ckeditor5-style';
+//import { Style } from '@ckeditor/ckeditor5-style';
 import {
 	Table,
 	TableCaption,
@@ -143,7 +143,7 @@ class Editor extends ClassicEditor {
 		SpecialCharactersText,
 		StandardEditingMode,
 		Strikethrough,
-		Style,
+		//Style,
 		Subscript,
 		Superscript,
 		Table,
@@ -153,7 +153,7 @@ class Editor extends ClassicEditor {
 		TableProperties,
 		TableToolbar,
 		TextTransformation,
-		Title,
+		//Title, // Import from @ckeditor/ckeditor5-heading
 		Underline,
 		Undo,
 		WordCount
@@ -167,7 +167,7 @@ class Editor extends ClassicEditor {
 				'selectAll',
 				'|',
 				'link',
-				'imageUpload',
+				//'imageUpload',
 				'imageInsert',
 				'mediaEmbed',
 				'insertTable',
@@ -185,10 +185,9 @@ class Editor extends ClassicEditor {
 				'outdent',
 				'indent',
 				'blockQuote',
-				'restrictedEditingException',
 				'-',
 				'heading',
-				'style',
+				//'style',
 				'fontSize',
 				'fontFamily',
 				'fontColor',
@@ -204,6 +203,7 @@ class Editor extends ClassicEditor {
 				'superscript',
 				'|',
 				'sourceEditing',
+				'restrictedEditingException',
 				'removeFormat'
 			],
 			shouldNotGroupWhenFull: true
@@ -227,7 +227,37 @@ class Editor extends ClassicEditor {
 				'tableCellProperties',
 				'tableProperties'
 			]
-		}
+		},
+		mediaEmbed: {
+			toolbar: [
+				'mediaEmbed'
+			]
+		},
+		heading: {
+			options: [
+				{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+				{ model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+				{ model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+				{ model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+				{ model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+				{ model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+				{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' },
+			]
+		},
+		/*style: {
+			definitions: [
+				{
+                    name: 'Article category',
+                    element: 'h3',
+                    classes: [ 'category' ]
+                },
+                {
+                    name: 'Info box',
+                    element: 'p',
+                    classes: [ 'info-box' ]
+                },
+			]
+		}*/
 	};
 }
 
