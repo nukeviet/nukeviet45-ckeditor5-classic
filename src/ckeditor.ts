@@ -79,6 +79,7 @@ import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Undo } from '@ckeditor/ckeditor5-undo';
 import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
+import { NVBox } from '@nukeviet/ckeditor5-nvbox';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -156,7 +157,8 @@ class Editor extends ClassicEditor {
 		//Title, // Import from @ckeditor/ckeditor5-heading
 		Underline,
 		Undo,
-		WordCount
+		WordCount,
+		NVBox
 	];
 
 	public static override defaultConfig: EditorConfig = {
@@ -217,7 +219,10 @@ class Editor extends ClassicEditor {
 				'imageStyle:block',
 				'imageStyle:side',
 				'linkImage'
-			]
+			],
+			//insert: {
+			//	integrations: [ 'assetManager', 'upload', 'url' ]
+			//}
 		},
 		table: {
 			contentToolbar: [

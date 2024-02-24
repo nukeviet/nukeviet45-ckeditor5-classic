@@ -28,6 +28,8 @@ if [ ! -z "$1" ] || [ ! -d "$DIR_PATH/node_modules" ]; then
     echo "Reinit repository"
     rm -rf "$DIR_PATH/node_modules"
     rm -f "$DIR_PATH/yarn.lock"
+    rm -f "$DIR_PATH/package-lock.json"
+    npm install --save https://github.com/nukeviet/ckeditor5-nvbox.git
     yarn install
 fi
 

@@ -6,7 +6,7 @@
 - npm 5.7.1+
 - git
 
-
+https://github.com/ckeditor/ckeditor5/tree/d66b1ff793fcad272fe15a500d24bea6dbe3b9fc/packages/ckeditor5-ckbox
 
 ## Tính năng hay:
 

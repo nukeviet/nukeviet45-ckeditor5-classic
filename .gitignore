@@ -2,3 +2,5 @@
 /node_modules
 /yarn.lock
 /test/uploads
+/test/debug.log
+/package-lock.json
