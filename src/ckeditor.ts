@@ -172,6 +172,7 @@ class Editor extends ClassicEditor {
 				//'imageUpload',
 				'imageInsert',
 				'mediaEmbed',
+				'nvbox',
 				'insertTable',
 				'code',
 				'codeBlock',

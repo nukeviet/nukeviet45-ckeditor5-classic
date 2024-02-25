@@ -12,6 +12,8 @@
 define('NV_SYSTEM', true);
 define('NV_ROOTDIR', pathinfo(str_replace(DIRECTORY_SEPARATOR, '/', __FILE__), PATHINFO_DIRNAME));
 
+require NV_ROOTDIR . '/mainfile.php';
+
 $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 
 ?>
@@ -79,6 +81,27 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 		<script src="../build/ckeditor.js"></script>
 		<script src="../build/language/vi.js"></script>
-		<script src="script.js"></script>
+		<script>
+			(async () => {
+				const editorId = 'news_bodyhtml';
+				await ClassicEditor
+				.create(document.querySelector('.editor'), {
+					language: 'vi',
+					simpleUpload: {
+						uploadUrl: '<?php echo NV_BASE_SITEURL ?>upload.php',
+						withCredentials: true,
+					}
+				})
+				.then(editor => {
+					window.nveditor = window.nveditor || [];
+					window.nveditor[editorId] = editor;
+				})
+				.catch(error => {
+					console.error(error);
+				});
+
+				//console.log(window.nveditor);
+			})();
+		</script>
 	</body>
 </html>

@@ -4,3 +4,4 @@
 /test/uploads
 /test/debug.log
 /package-lock.json
+/test/error.log
