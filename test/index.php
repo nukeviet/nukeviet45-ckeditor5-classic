@@ -90,7 +90,10 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 					simpleUpload: {
 						uploadUrl: '<?php echo NV_BASE_SITEURL ?>upload.php',
 						withCredentials: true,
-					}
+					},
+                    nvbox: {
+                        browseUrl: '<?php echo NV_BASE_SITEURL ?>popup.html?editorid=' + editorId,
+                    }
 				})
 				.then(editor => {
 					window.nveditor = window.nveditor || [];

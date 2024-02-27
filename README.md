@@ -5,6 +5,7 @@
 - Node.js 18.0.0+
 - npm 5.7.1+
 - git
+- curl
 
 ### Cài đặt
 
@@ -46,6 +47,14 @@ if [[ $? > 0 ]]; then
   exit
 fi
 
+#git add ./src/*
+#git commit -m "Update build NVBox"
+#git push
+#if [[ $? > 0 ]]; then
+#  echo "Push NVBox to repo error!!!"
+#  exit
+#fi
+
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
 
@@ -59,13 +68,26 @@ find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js.map" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.d.ts" -type f | xargs /bin/rm -f
 
+rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/build/"
+
 cd "$DIR_PATH/nukeviet45-ckeditor5-classic/"
-npm run build
+if [ -z "$1" ]; then
+  npm run build
+else
+  npm run build-dev
+fi
+if [[ $? > 0 ]]; then
+  echo "Push CKEditor error!!!"
+  exit
+fi
+curl -k https://raw.githubusercontent.com/ckeditor/ckeditor5/master/LICENSE.md > "$DIR_PATH/nukeviet45-ckeditor5-classic/build/LICENSE.md"
+
 ```
 
 ### Build
 
-Chạy `bash build.sh`
+- Để build nhanh phục vụ test chạy `bash build.sh dev`
+- Để build sử dụng chạy `bash build.sh`. Chạy chậm hơn gấp đôi
 
 Sau khi build thành công thì thư mục `nukeviet45-ckeditor5-classic/build` sẽ chứa 1 file js và 1 file thư mục language. Nó chính là trình soạn thảo sẽ dùng.
 
