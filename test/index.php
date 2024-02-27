@@ -18,11 +18,7 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 
 ?>
 
-<!DOCTYPE html><!--
-	Copyright (c) 2014-2024, CKSource Holding sp. z o.o. All rights reserved.
-	This file is licensed under the terms of the MIT License (see LICENSE.md).
--->
-
+<!DOCTYPE html>
 <html lang="vi">
 	<head>
 		<title>CKEditor 5 ClassicEditor for NukeViet 4.5</title>
@@ -93,6 +89,9 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 					},
                     nvbox: {
                         browseUrl: '<?php echo NV_BASE_SITEURL ?>popup.html?editorid=' + editorId,
+                        options: {
+                            noCache: true
+                        }
                     }
 				})
 				.then(editor => {

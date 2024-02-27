@@ -18,10 +18,14 @@
             if (!editor) {
                 throw new Error('No Editor!!!');
             }
-            editor.commands.get('nvbox').execute('/uploads/path-to/image.png', {
-                opt1: 'value1',
-                opt2: false
+            
+            // Insert full image
+            editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/g3.jpg', {
+                alt: 'Image Alt'
             });
+            
+            // Insert file
+            //editor.commands.get('nvbox').execute('/uploads/path-to/file.pdf');
             editor.editing.view.focus();
             window.close();
         </script>
