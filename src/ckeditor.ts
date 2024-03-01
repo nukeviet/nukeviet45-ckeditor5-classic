@@ -47,7 +47,7 @@ import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { AutoLink, Link, LinkImage } from '@ckeditor/ckeditor5-link';
 import { List, ListProperties } from '@ckeditor/ckeditor5-list';
 import { Markdown } from '@ckeditor/ckeditor5-markdown-gfm';
-import { MediaEmbed, MediaEmbedToolbar } from '@ckeditor/ckeditor5-media-embed';
+//import { MediaEmbed, MediaEmbedToolbar } from '@ckeditor/ckeditor5-media-embed';
 import { Mention } from '@ckeditor/ckeditor5-mention';
 import { PageBreak } from '@ckeditor/ckeditor5-page-break';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
@@ -124,8 +124,8 @@ class Editor extends ClassicEditor {
 		List,
 		ListProperties,
 		Markdown,
-		MediaEmbed,
-		MediaEmbedToolbar,
+		//MediaEmbed,
+		//MediaEmbedToolbar,
 		Mention,
 		PageBreak,
 		Paragraph,
@@ -171,7 +171,7 @@ class Editor extends ClassicEditor {
 				'link',
 				//'imageUpload',
 				'imageInsert',
-				'mediaEmbed',
+				//'mediaEmbed',
 				'nvbox',
 				'insertTable',
 				'code',
@@ -234,11 +234,11 @@ class Editor extends ClassicEditor {
 				'tableProperties'
 			]
 		},
-		mediaEmbed: {
-			toolbar: [
-				'mediaEmbed'
-			]
-		},
+		//mediaEmbed: {
+		//	toolbar: [
+		//		'mediaEmbed'
+		//	]
+		//},
 		heading: {
 			options: [
 				{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
