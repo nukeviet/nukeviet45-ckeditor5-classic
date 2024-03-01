@@ -93,6 +93,23 @@ Sau khi build thành công thì thư mục `nukeviet45-ckeditor5-classic/build` 
 
 Nếu bạn chạy trên localhost hoặc hosting có thể test bản build bằng cách vào http://localhost/thu-muc/nukeviet45-ckeditor5-classic/test/ để chạy test thử nghiệm trình soạn thảo.
 
+**Cập nhật phiên bản**
+
+Hướng dẫn chính thức của CKEditor [tại đây](https://ckeditor.com/docs/ckeditor5/latest/updating/guides/updating-ckeditor-5.html)   
+Tóm tắt lại cần:
+
+- Đọc mục `MINOR BREAKING CHANGES` trong bản phát hành ([Ví dụ bản này](https://github.com/ckeditor/ckeditor5/releases/tag/v41.1.0)) để xác định xem cần sửa gì cho NVBox và các plugin phát triển của NukeViet không.
+- Chỉnh sửa NVBox và các plugin nếu cần thiết
+- Sửa phiên bản `dependencies` trong package.json lên bản mới.
+- Trong thư mục `nukeviet45-ckeditor5-classic` chạy: 
+
+```bash
+rm -rf node_modules
+npm i @nukeviet/ckeditor5-nvbox
+```
+
+- Sau đó build.sh để build
+
 ## Tích hợp NukeViet
 
 - Giao diện cần có đủ CSS như trong contents.css
@@ -114,7 +131,6 @@ Nếu bạn chạy trên localhost hoặc hosting có thể test bản build b�
 - Dùng CSS của trang hiện tại để hiển thị nội dung định dạng, kết quả sẽ sát hơn so với thực tế.
 - Công cụ chèn và quản lý bảng tối ưu hơn.
 - Chèn và sửa ảnh chỉ bằng 1 thao tác upload trực tiếp.
-
 - Chỉnh sửa table có thể kéo thả và hiển thị không bị vỡ giao diện như CKEditor 4
 
 ### Tính năng hay nhưng không sử dụng
