@@ -16,76 +16,18 @@ git clone https://github.com/nukeviet/ckeditor5-nvbox.git
 cd ckeditor5-nvbox
 npm install
 cd  ../
+git clone https://github.com/nukeviet/ckeditor5-nvmedia.git
+cd ckeditor5-nvmedia
+npm install
+cd  ../
 git clone https://github.com/nukeviet/nukeviet45-ckeditor5-classic.git
 cd nukeviet45-ckeditor5-classic
-npm i @nukeviet/ckeditor5-nvbox
-```
-
-Tại thư mục có chứa hai thư mục đã cài là ckeditor5-nvbox và nukeviet45-ckeditor5-classic tạo file build.sh có nội dung như sau  
-
-```
-#!/bin/bash
-
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do
-  TARGET="$(readlink "$SOURCE")"
-  if [[ $TARGET == /* ]]; then
-    SOURCE="$TARGET"
-  else
-    DIR="$(dirname "$SOURCE")"
-    SOURCE="$DIR/$TARGET"
-  fi
-done
-DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
-DIR_PATH=$PWD
-
-cd "$DIR_PATH/ckeditor5-nvbox"
-
-npm run build
-if [[ $? > 0 ]]; then
-  echo "Build NVBox error!!!"
-  exit
-fi
-
-#git add ./src/*
-#git commit -m "Update build NVBox"
-#git push
-#if [[ $? > 0 ]]; then
-#  echo "Push NVBox to repo error!!!"
-#  exit
-#fi
-
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
-
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
-
-cp -R "$DIR_PATH/ckeditor5-nvbox/src/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/"
-cp -R "$DIR_PATH/ckeditor5-nvbox/lang/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/"
-
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js.map" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.d.ts" -type f | xargs /bin/rm -f
-
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/build/"
-
-cd "$DIR_PATH/nukeviet45-ckeditor5-classic/"
-if [ -z "$1" ]; then
-  npm run build
-else
-  npm run build-dev
-fi
-if [[ $? > 0 ]]; then
-  echo "Push CKEditor error!!!"
-  exit
-fi
-curl -k https://raw.githubusercontent.com/ckeditor/ckeditor5/master/LICENSE.md > "$DIR_PATH/nukeviet45-ckeditor5-classic/build/LICENSE.md"
-
+npm install
 ```
 
 ## Build
 
+- Tại thư mục nukeviet45-ckeditor5-classic xác định được file build.sh
 - Để build nhanh phục vụ test chạy `bash build.sh dev`
 - Để build sử dụng chạy `bash build.sh`. Chạy chậm hơn gấp đôi
 
@@ -105,7 +47,7 @@ Tóm tắt lại cần:
 
 ```bash
 rm -rf node_modules
-npm i @nukeviet/ckeditor5-nvbox
+npm install
 ```
 
 - Sau đó build.sh để build
@@ -132,6 +74,7 @@ npm i @nukeviet/ckeditor5-nvbox
 - Công cụ chèn và quản lý bảng tối ưu hơn.
 - Chèn và sửa ảnh chỉ bằng 1 thao tác upload trực tiếp.
 - Chỉnh sửa table có thể kéo thả và hiển thị không bị vỡ giao diện như CKEditor 4
+- Bôi đen một đoạt text, dán link vào nó sẽ tự chuyển thành liên kết
 
 ### Tính năng hay nhưng không sử dụng
 
