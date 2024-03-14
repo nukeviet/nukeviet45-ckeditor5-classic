@@ -229,6 +229,11 @@ class Editor extends ClassicEditor {
 			//	integrations: [ 'assetManager', 'upload', 'url' ]
 			//}
 		},
+        nvmedia: {
+            insert: {
+                integrations: [ 'assetManager', 'upload', 'url' ]
+            }
+        },
 		table: {
 			contentToolbar: [
 				'tableColumn',
