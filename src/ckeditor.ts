@@ -81,7 +81,7 @@ import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 import { NVBox } from '@nukeviet/ckeditor5-nvbox';
-import { NVMedia } from '@nukeviet/ckeditor5-nvmedia';
+import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -161,7 +161,8 @@ class Editor extends ClassicEditor {
 		Undo,
 		WordCount,
 		NVBox,
-		NVMedia
+		NVMedia,
+		NVMediaInsert
 	];
 
 	public static override defaultConfig: EditorConfig = {
