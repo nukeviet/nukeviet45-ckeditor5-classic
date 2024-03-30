@@ -7,23 +7,23 @@
 
 /* eslint-env node */
 
-const path = require( 'path' );
-const webpack = require( 'webpack' );
-const { bundler, styles } = require( '@ckeditor/ckeditor5-dev-utils' );
-const { CKEditorTranslationsPlugin } = require( '@ckeditor/ckeditor5-dev-translations' );
-const TerserWebpackPlugin = require( 'terser-webpack-plugin' );
+const path = require('path');
+const webpack = require('webpack');
+const { bundler, styles } = require('@ckeditor/ckeditor5-dev-utils');
+const { CKEditorTranslationsPlugin } = require('@ckeditor/ckeditor5-dev-translations');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = {
 	devtool: 'source-map',
 	performance: { hints: false },
 
-	entry: path.resolve( __dirname, 'src', 'ckeditor.ts' ),
+	entry: path.resolve(__dirname, 'src', 'ckeditor.ts'),
 
 	output: {
 		// The name under which the editor will be exported.
 		library: 'ClassicEditor',
 
-		path: path.resolve( __dirname, 'build' ),
+		path: path.resolve(__dirname, 'build'),
 		filename: 'ckeditor.js',
 		libraryTarget: 'umd',
 		libraryExport: 'default'
@@ -31,7 +31,7 @@ module.exports = {
 
 	optimization: {
 		minimizer: [
-			new TerserWebpackPlugin( {
+			new TerserWebpackPlugin({
 				sourceMap: false,
 				terserOptions: {
 					output: {
@@ -40,41 +40,41 @@ module.exports = {
 					}
 				},
 				extractComments: false
-			} )
+			})
 		]
 	},
 
 	plugins: [
-		new CKEditorTranslationsPlugin( {
+		new CKEditorTranslationsPlugin({
 			// UI language. Language codes follow the https://en.wikipedia.org/wiki/ISO_639-1 format.
 			// When changing the built-in language, remember to also change it in the editor's configuration (src/ckeditor.ts).
 			language: 'en',
 			additionalLanguages: ['vi', 'fr', 'ru'],
-            strict: true,
-            verbose: false,
-            outputDirectory: 'language',
-            buildAllTranslationsToSeparateFiles: true
-		} ),
-		new webpack.BannerPlugin( {
+			strict: true,
+			verbose: false,
+			outputDirectory: 'language',
+			buildAllTranslationsToSeparateFiles: true
+		}),
+		new webpack.BannerPlugin({
 			banner: bundler.getLicenseBanner(),
 			raw: true
-		} )
+		})
 	],
 
 	resolve: {
-		extensions: [ '.ts', '.js', '.json' ]
+		extensions: ['.ts', '.js', '.json']
 	},
 
 	module: {
-		rules: [ {
+		rules: [{
 			test: /\.svg$/,
-			use: [ 'raw-loader' ]
+			use: ['raw-loader']
 		}, {
 			test: /\.ts$/,
 			use: 'ts-loader'
 		}, {
 			test: /\.css$/,
-			use: [ {
+			use: [{
 				loader: 'style-loader',
 				options: {
 					injectType: 'singletonStyleTag',
@@ -87,14 +87,16 @@ module.exports = {
 			}, {
 				loader: 'postcss-loader',
 				options: {
-					postcssOptions: styles.getPostCssConfig( {
+					postcssOptions: styles.getPostCssConfig({
 						themeImporter: {
-							themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
+							themePath: require.resolve('@ckeditor/ckeditor5-theme-lark'),
+							debug: false
 						},
-						minify: true
-					} )
+						minify: true,
+						sourceMap: false
+					})
 				}
-			} ]
-		} ]
+			}]
+		}]
 	}
 };
