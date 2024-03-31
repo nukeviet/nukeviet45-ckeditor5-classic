@@ -15,6 +15,7 @@ define('NV_ROOTDIR', pathinfo(str_replace(DIRECTORY_SEPARATOR, '/', __FILE__), P
 require NV_ROOTDIR . '/mainfile.php';
 
 $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
+$bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 
 ?>
 
@@ -24,15 +25,15 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 		<title>CKEditor 5 ClassicEditor for NukeViet 4.5</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/png" href="https://nukeviet.vn/favicon.ico">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="icon" type="image/png" href="<?php echo NV_BASE_SITEURL ?>favicon.ico">
+		<link href="<?php echo NV_BASE_SITEURL ?>css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?php echo NV_BASE_SITEURL ?>css/styles.css">
 	</head>
 	<body data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
 		<header class="bg-dark mb-3">
 			<div class="container">
 				<div class="centered p-2 d-flex align-items-center">
-					<h1 class="mb-0 mt-1"><a class="link-light" href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer"><img src="https://c.cksource.com/a/1/logos/ckeditor5.svg" alt="CKEditor 5 logo">CKEditor 5</a></h1>
+					<h1 class="mb-0 mt-1"><a class="link-light" href="https://ckeditor.com/ckeditor-5/" target="_blank" rel="noopener noreferrer"><img src="<?php echo NV_BASE_SITEURL ?>images/ckeditor5.svg" alt="CKEditor 5 logo">CKEditor 5</a></h1>
 					<nav class="ms-3">
 						<ul class="list-inline mb-0">
 							<li class="list-inline-item"><a class="link-light" href="https://ckeditor.com/docs/ckeditor5/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
@@ -74,8 +75,8 @@ $bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
 				</div>
 			</div>
 		</footer>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+		<script src="<?php echo NV_BASE_SITEURL ?>js/jquery.min.js"></script>
+		<script src="<?php echo NV_BASE_SITEURL ?>js/bootstrap.bundle.min.js"></script>
 		<script src="../build/ckeditor.js"></script>
 		<script src="../build/language/vi.js"></script>
 		<script>

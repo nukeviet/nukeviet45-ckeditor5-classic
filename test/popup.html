@@ -12,20 +12,27 @@
         <script>
             // Đưa vào NukeViet sẽ lấy từ $_GET['editorid']
             let editorId = 'news_bodyhtml';
-            let editor = window.opener || []; 
+            let editor = window.opener || [];
             editor = editor.nveditor || [];
             editor = editor[editorId] || [];
             if (!editor) {
                 throw new Error('No Editor!!!');
             }
-            
+
             // Insert full image
-            editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/g3.jpg', {
-                alt: 'Image Alt'
-            });
-            
-            // Insert file
-            //editor.commands.get('nvbox').execute('/uploads/path-to/file.pdf');
+            //editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/nukevietcms.png', {
+            //    alt: 'Image Alt'
+            //});
+
+            // Insert file => Link
+            //editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/nukevietcms.pdf');
+
+            // Insert video
+            editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/video.mp4');
+
+            // Insert audio
+            //editor.commands.get('nvbox').execute('/ckeditor/nukeviet45-ckeditor5-classic/test/uploads/audio.mp3');
+
             editor.editing.view.focus();
             window.close();
         </script>
