@@ -214,7 +214,7 @@ class Editor extends ClassicEditor {
 				'restrictedEditingException',
 				'removeFormat'
 			],
-			shouldNotGroupWhenFull: false
+			shouldNotGroupWhenFull: true // NukeViet đang để editor trong table, set lên false sẽ vỡ màn hình.
 		},
 		language: 'en',
 		image: {
