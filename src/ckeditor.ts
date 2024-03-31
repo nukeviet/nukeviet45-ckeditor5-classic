@@ -193,7 +193,7 @@ class Editor extends ClassicEditor {
 				'outdent',
 				'indent',
 				'blockQuote',
-				'-',
+				//'-', // Sử dụng 1 dòng toolbar và tự động ẩn tùy kích thước màn hình
 				'heading',
 				//'style',
 				'fontSize',
@@ -214,7 +214,7 @@ class Editor extends ClassicEditor {
 				'restrictedEditingException',
 				'removeFormat'
 			],
-			shouldNotGroupWhenFull: true
+			shouldNotGroupWhenFull: false
 		},
 		language: 'en',
 		image: {
