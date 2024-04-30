@@ -29,6 +29,13 @@ if [[ $? > 0 ]]; then
   exit
 fi
 
+cd "$DIR_PATH/ckeditor5-nvtools"
+npm run build
+if [[ $? > 0 ]]; then
+  echo "Build NVTools error!!!"
+  exit
+fi
+
 #git add ./src/*
 #git commit -m "Update build NVBox"
 #git push
@@ -37,6 +44,7 @@ fi
 #  exit
 #fi
 
+# Xử lý plugin nvbox
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
 
@@ -50,6 +58,7 @@ find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js.map" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.d.ts" -type f | xargs /bin/rm -f
 
+# Xử lý plugin nvmedia
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/lang"
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/src"
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/typings"
@@ -68,6 +77,17 @@ cp -R "$DIR_PATH/ckeditor5-nvmedia/theme/" "$DIR_PATH/nukeviet45-ckeditor5-class
 find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.js" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.js.map" -type f | xargs /bin/rm -f
 find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.d.ts" -type f | xargs /bin/rm -f
+
+# Xử lý plugin nvtools
+rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvtools/src"
+
+mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvtools/src"
+
+cp -R "$DIR_PATH/ckeditor5-nvtools/src/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvtools/"
+
+find "$DIR_PATH/ckeditor5-nvtools/src" -name "*.js" -type f | xargs /bin/rm -f
+find "$DIR_PATH/ckeditor5-nvtools/src" -name "*.js.map" -type f | xargs /bin/rm -f
+find "$DIR_PATH/ckeditor5-nvtools/src" -name "*.d.ts" -type f | xargs /bin/rm -f
 
 rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/build/"
 

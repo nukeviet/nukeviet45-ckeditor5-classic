@@ -82,6 +82,7 @@ import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 import { NVBox } from '@nukeviet/ckeditor5-nvbox';
 import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
+import { NVTools } from '@nukeviet/ckeditor5-nvtools';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -162,7 +163,8 @@ class Editor extends ClassicEditor {
 		WordCount,
 		NVBox,
 		NVMedia,
-		NVMediaInsert
+		NVMediaInsert,
+		NVTools
 	];
 
 	public static override defaultConfig: EditorConfig = {
@@ -274,7 +276,11 @@ class Editor extends ClassicEditor {
                 },
 			]
 		}*/
+		updateSourceElementOnDestroy: false
 	};
 }
+
+// Tắt tự động cập nhật textarea khi submit để dùng editor.getData() thay thế
+Editor.prototype.updateSourceElement = function() {}
 
 export default Editor;

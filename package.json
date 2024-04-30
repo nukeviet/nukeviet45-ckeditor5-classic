@@ -44,7 +44,8 @@
     "@ckeditor/ckeditor5-upload": "41.2.0",
     "@ckeditor/ckeditor5-word-count": "41.2.0",
     "@nukeviet/ckeditor5-nvbox": "github:nukeviet/ckeditor5-nvbox",
-    "@nukeviet/ckeditor5-nvmedia": "github:nukeviet/ckeditor5-nvmedia"
+    "@nukeviet/ckeditor5-nvmedia": "github:nukeviet/ckeditor5-nvmedia",
+    "@nukeviet/ckeditor5-nvtools": "github:nukeviet/ckeditor5-nvtools"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-core": "41.2.0",

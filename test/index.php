@@ -99,6 +99,11 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 				.then(editor => {
 					window.nveditor = window.nveditor || [];
 					window.nveditor[editorId] = editor;
+					if (editor.sourceElement && editor.sourceElement instanceof HTMLTextAreaElement && editor.sourceElement.form) {
+						editor.sourceElement.form.addEventListener('submit', event => {
+							editor.sourceElement.value = editor.getData();
+						});
+					}
 				})
 				.catch(error => {
 					console.error(error);
