@@ -107,7 +107,7 @@ figure.image.image_resized > figcaption {
 }
 
 figure.image {
-    display: table;
+    display: table!important; /* Important để không xung đột khi copy từ Google Docs */
     clear: both;
     text-align: center;
     margin: 5px auto 10px auto;
