@@ -47,7 +47,11 @@ import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { AutoLink, Link, LinkImage } from '@ckeditor/ckeditor5-link';
 import { List, ListProperties } from '@ckeditor/ckeditor5-list';
 import { Markdown } from '@ckeditor/ckeditor5-markdown-gfm';
+
+// MediaEmbed chỉ hỗ trợ chèn một số cái như YouTube, Vimeo, Dailymotion, Spotify
+// Không phải là chèn video, iframe như nhu cầu thường thấy do đó cần viết plugin khác thay thế
 //import { MediaEmbed, MediaEmbedToolbar } from '@ckeditor/ckeditor5-media-embed';
+
 import { Mention } from '@ckeditor/ckeditor5-mention';
 import { PageBreak } from '@ckeditor/ckeditor5-page-break';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
@@ -127,8 +131,8 @@ class Editor extends ClassicEditor {
 		List,
 		ListProperties,
 		Markdown,
-		//MediaEmbed,
-		//MediaEmbedToolbar,
+		// MediaEmbed,
+		// MediaEmbedToolbar,
 		Mention,
 		PageBreak,
 		Paragraph,
@@ -261,6 +265,33 @@ class Editor extends ClassicEditor {
 				{ model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
 				{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' },
 			]
+		},
+		htmlSupport: {
+			disallow: [{
+				name: /.*/,
+				attributes: [ /^on.*/ ]
+			}, {
+				name: /.*/,
+				attributes: [
+                    'action',
+                    'background',
+                    'codebase',
+                    'dynsrc',
+                    'lowsrc',
+                    'allownetworking',
+                    'allowscriptaccess',
+                    'fscommand',
+                    'seeksegmenttime'
+                ]
+			}, {
+				name: /^(script|style|link)$/
+			}],
+			allow: [{
+				name: /.*/, // Mặc định cho phép toàn bộ các thẻ
+				attributes: true, // Mặc định cho phép hết các thuộc tính, ngoài trừ các cái bị cấm bên trên
+				classes: true, // Mặc định cho phép mọi class
+				styles: true // Mặc định cho phép mọi inline-css
+			}]
 		},
 		/*style: {
 			definitions: [

@@ -1,0 +1,5 @@
+- Nhúng iframe
+- Chèn video youtube vào nội dung
+- Tải tập tin video lên
+- Xem tài liệu trực tuyến
+- Lấy ảnh về máy chủ
