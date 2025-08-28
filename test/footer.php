@@ -13,5 +13,5 @@
 </footer>
 <script src="<?php echo NV_BASE_SITEURL ?>js/jquery.min.js"></script>
 <script src="<?php echo NV_BASE_SITEURL ?>js/bootstrap.bundle.min.js"></script>
-<script src="../build/ckeditor.js"></script>
-<script src="../build/language/vi.js"></script>
+<script src="../dist/language/vi.js?t=<?php echo time(); ?>"></script>
+<script src="../dist/ckeditor.js?t=<?php echo time(); ?>"></script>

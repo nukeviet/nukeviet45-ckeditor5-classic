@@ -22,7 +22,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>CKEditor 5 ClassicEditor for NukeViet</title>
+		<title>Plugin iframe</title>
 		<?php include NV_ROOTDIR . '/head.php'; ?>
 	</head>
 	<body data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
@@ -38,7 +38,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 		</header>
 		<div class="container message">
 			<div class="centered mb-4">
-				<h1>CKEditor 5 ClassicEditor for NukeViet test page</h1>
+				<h1>Plugin iframe</h1>
 			</div>
 		</div>
 		<div class="container centered">
@@ -46,7 +46,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 				<div class="editor-container">
 					<form method="post" action="post.php">
 						<div class="mb-3">
-							<textarea class="editor form-control" rows="10" name="bodyhtml"><?php echo $bodyhtml ?></textarea>
+							<textarea class="editor form-control" rows="10" name="bodyhtml">Nội dung kiểm tra</textarea>
 						</div>
 						<div class="text-center">
 							<button type="submit" class="btn btn-primary">Submit</button>

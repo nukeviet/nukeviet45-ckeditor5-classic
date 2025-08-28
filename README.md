@@ -43,6 +43,7 @@ Tóm tắt lại cần:
 - Đọc mục `MINOR BREAKING CHANGES` trong bản phát hành ([Ví dụ bản này](https://github.com/ckeditor/ckeditor5/releases/tag/v41.1.0)) để xác định xem cần sửa gì cho NVBox và các plugin phát triển của NukeViet không.
 - Chỉnh sửa NVBox và các plugin nếu cần thiết
 - Sửa phiên bản `dependencies` trong package.json của kho code này và cả nvbox, nvmedia lên bản mới.
+- Đối chiếu https://github.com/ckeditor/ckeditor5/blob/master/package.json với package.json ở kho này xem cần bổ sung chỉnh sửa thêm bớt thư viện nào
 - Trong thư mục `nukeviet45-ckeditor5-classic` chạy: 
 
 ```bash
