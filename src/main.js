@@ -12,6 +12,7 @@ import {
 	Code,
 	CodeBlock,
 	Emoji,
+	Mention,
 	Essentials,
 	FindAndReplace,
 	FontBackgroundColor,
@@ -40,12 +41,11 @@ import {
 	LinkImage,
 	List,
 	ListProperties,
-	MediaEmbed,
-	Mention,
 	Paragraph,
 	PasteFromMarkdownExperimental,
 	PasteFromOffice,
 	PlainTableOutput,
+	PageBreak,
 	RemoveFormat,
 	ShowBlocks,
 	SourceEditing,
@@ -57,7 +57,6 @@ import {
 	SpecialCharactersMathematical,
 	SpecialCharactersText,
 	Strikethrough,
-	Style,
 	Subscript,
 	Superscript,
 	Table,
@@ -68,7 +67,6 @@ import {
 	TableProperties,
 	TableToolbar,
 	TextTransformation,
-	TodoList,
 	Underline,
 	WordCount
 } from 'ckeditor5';
@@ -79,50 +77,50 @@ const editorConfig = {
 		items: [
 			'undo',
 			'redo',
+			'selectAll',
 			'|',
-			'sourceEditing',
-			'showBlocks',
+			'link',
+			'bookmark',
+			'imageInsert',
+			'nvmediaInsert',
+			'nvbox',
+			'insertTable',
+			'code',
+			'codeBlock',
+			'horizontalLine',
+			'specialCharacters',
+			'pageBreak',
+			'|',
 			'findAndReplace',
-			'fullscreen',
+			'showBlocks',
 			'|',
+			'bulletedList',
+			'numberedList',
+			'outdent',
+			'indent',
+			'blockQuote',
 			'heading',
-			'style',
-			'|',
 			'fontSize',
 			'fontFamily',
 			'fontColor',
 			'fontBackgroundColor',
+			'highlight',
+			'alignment',
 			'|',
 			'bold',
 			'italic',
 			'underline',
+			'emoji',
 			'strikethrough',
 			'subscript',
 			'superscript',
-			'code',
+			'|',
+			'sourceEditing',
 			'removeFormat',
-			'|',
-			'emoji',
-			'specialCharacters',
-			'horizontalLine',
-			'link',
-			'bookmark',
-			'mediaEmbed',
-			'insertTable',
-			'insertTableLayout',
-			'highlight',
-			'blockQuote',
-			'codeBlock',
-			'|',
-			'alignment',
-			'|',
-			'bulletedList',
-			'numberedList',
-			'todoList',
-			'outdent',
-			'indent'
+			'fullscreen'
 		],
-		shouldNotGroupWhenFull: false
+		// TODO: NukeViet đang để editor trong table, set lên false sẽ vỡ màn hình. Bản 5.0 hoàn thiện đặt false
+		shouldNotGroupWhenFull: true
 	},
 	plugins: [
 		Alignment,
@@ -136,7 +134,9 @@ const editorConfig = {
 		CloudServices,
 		Code,
 		CodeBlock,
+		PageBreak,
 		Emoji,
+		Mention,
 		Essentials,
 		FindAndReplace,
 		FontBackgroundColor,
@@ -165,8 +165,6 @@ const editorConfig = {
 		LinkImage,
 		List,
 		ListProperties,
-		MediaEmbed,
-		Mention,
 		Paragraph,
 		PasteFromMarkdownExperimental,
 		PasteFromOffice,
@@ -182,7 +180,6 @@ const editorConfig = {
 		SpecialCharactersMathematical,
 		SpecialCharactersText,
 		Strikethrough,
-		Style,
 		Subscript,
 		Superscript,
 		Table,
@@ -193,11 +190,10 @@ const editorConfig = {
 		TableProperties,
 		TableToolbar,
 		TextTransformation,
-		TodoList,
 		Underline,
 		WordCount
 	],
-	balloonToolbar: ['bold', 'italic', '|', 'link', '|', 'bulletedList', 'numberedList'],
+	balloonToolbar: ['undo', 'redo', '|', 'bold', 'italic', '|', 'link', '|', 'bulletedList', 'numberedList'],
 	fontFamily: {
 		supportAllValues: true
 	},
@@ -218,58 +214,41 @@ const editorConfig = {
 	},
 	heading: {
 		options: [
-			{
-				model: 'paragraph',
-				title: 'Paragraph',
-				class: 'ck-heading_paragraph'
-			},
-			{
-				model: 'heading1',
-				view: 'h1',
-				title: 'Heading 1',
-				class: 'ck-heading_heading1'
-			},
-			{
-				model: 'heading2',
-				view: 'h2',
-				title: 'Heading 2',
-				class: 'ck-heading_heading2'
-			},
-			{
-				model: 'heading3',
-				view: 'h3',
-				title: 'Heading 3',
-				class: 'ck-heading_heading3'
-			},
-			{
-				model: 'heading4',
-				view: 'h4',
-				title: 'Heading 4',
-				class: 'ck-heading_heading4'
-			},
-			{
-				model: 'heading5',
-				view: 'h5',
-				title: 'Heading 5',
-				class: 'ck-heading_heading5'
-			},
-			{
-				model: 'heading6',
-				view: 'h6',
-				title: 'Heading 6',
-				class: 'ck-heading_heading6'
-			}
+			{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+			{ model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+			{ model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+			{ model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+			{ model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+			{ model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+			{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' },
 		]
 	},
 	htmlSupport: {
-		allow: [
-			{
-				name: /^.*$/,
-				styles: true,
-				attributes: true,
-				classes: true
-			}
-		]
+		disallow: [{
+			name: /.*/,
+			attributes: [ /^on.*/ ]
+		}, {
+			name: /.*/,
+			attributes: [
+				'action',
+				'background',
+				'codebase',
+				'dynsrc',
+				'lowsrc',
+				'allownetworking',
+				'allowscriptaccess',
+				'fscommand',
+				'seeksegmenttime'
+			]
+		}, {
+			name: /^(script|style|link)$/
+		}],
+		allow: [{
+			name: /.*/, // Mặc định cho phép toàn bộ các thẻ
+			attributes: true, // Mặc định cho phép hết các thuộc tính, ngoài trừ các cái bị cấm bên trên
+			classes: true, // Mặc định cho phép mọi class
+			styles: true // Mặc định cho phép mọi inline-css
+		}]
 	},
 	image: {
 		toolbar: [
@@ -277,10 +256,13 @@ const editorConfig = {
 			'imageTextAlternative',
 			'|',
 			'imageStyle:inline',
+			'imageStyle:block',
+			'imageStyle:side',
 			'imageStyle:wrapText',
 			'imageStyle:breakText',
 			'|',
-			'resizeImage'
+			'resizeImage',
+			'linkImage'
 		]
 	},
 	licenseKey: 'GPL',
@@ -304,66 +286,15 @@ const editorConfig = {
 			reversed: true
 		}
 	},
-	mention: {
-		feeds: [
-			{
-				marker: '@',
-				feed: [
-					/* See: https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html */
-				]
-			}
-		]
-	},
-	placeholder: 'Type or paste your content here!',
-	style: {
-		definitions: [
-			{
-				name: 'Article category',
-				element: 'h3',
-				classes: ['category']
-			},
-			{
-				name: 'Title',
-				element: 'h2',
-				classes: ['document-title']
-			},
-			{
-				name: 'Subtitle',
-				element: 'h3',
-				classes: ['document-subtitle']
-			},
-			{
-				name: 'Info box',
-				element: 'p',
-				classes: ['info-box']
-			},
-			{
-				name: 'CTA Link Primary',
-				element: 'a',
-				classes: ['button', 'button--green']
-			},
-			{
-				name: 'CTA Link Secondary',
-				element: 'a',
-				classes: ['button', 'button--black']
-			},
-			{
-				name: 'Marker',
-				element: 'span',
-				classes: ['marker']
-			},
-			{
-				name: 'Spoiler',
-				element: 'span',
-				classes: ['spoiler']
-			}
-		]
-	},
 	table: {
 		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
-	}
+	},
+	updateSourceElementOnDestroy: false
 };
 
 ClassicEditor.defaultConfig = editorConfig;
+
+// Tắt tự động cập nhật textarea khi submit để dùng editor.getData() thay thế
+ClassicEditor.prototype.updateSourceElement = function() {}
 
 export default ClassicEditor;
