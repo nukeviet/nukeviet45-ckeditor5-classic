@@ -15,6 +15,11 @@
     --nv-font-size-xxl: 22px;
 }
 
+:root {
+    --ck-z-default: 100;
+    --ck-z-panel: calc(var(--ck-z-default) + 955);
+}
+
 /* Table */
 figure.table .ck-table-resized {
     table-layout: fixed;

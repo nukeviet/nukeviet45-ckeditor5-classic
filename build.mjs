@@ -1,6 +1,7 @@
 import { build } from 'vite';
 import terser from '@rollup/plugin-terser';
 import BannerInjection from 'vite-plugin-banner-injection';
+import svg from 'vite-plugin-svgo';
 import fs from 'fs';
 import path from 'path';
 
@@ -17,6 +18,9 @@ const CK_BANNER = `/**
 async function run() {
   // Build Ckeditor
   await build({
+    plugins: [
+		svg()
+	],
     build: {
       lib: {
         entry: './src/main.js',

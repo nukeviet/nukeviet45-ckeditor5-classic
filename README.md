@@ -1,4 +1,4 @@
-# CKEditor 5 build for NukeViet 4.5
+# CKEditor 5 build for NukeViet CMS
 
 ## Yêu cầu:
 

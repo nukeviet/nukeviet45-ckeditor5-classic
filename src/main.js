@@ -71,6 +71,7 @@ import {
 	WordCount
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
+import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
 
 const editorConfig = {
 	toolbar: {
@@ -191,7 +192,9 @@ const editorConfig = {
 		TableToolbar,
 		TextTransformation,
 		Underline,
-		WordCount
+		WordCount,
+		NVMedia,
+		NVMediaInsert
 	],
 	balloonToolbar: ['undo', 'redo', '|', 'bold', 'italic', '|', 'link', '|', 'bulletedList', 'numberedList'],
 	fontFamily: {

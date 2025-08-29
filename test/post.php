@@ -12,6 +12,9 @@
 define('NV_SYSTEM', true);
 define('NV_ROOTDIR', pathinfo(str_replace(DIRECTORY_SEPARATOR, '/', __FILE__), PATHINFO_DIRNAME));
 
+$htmlLength = strlen($_POST['bodyhtml'] ?? '');
+
 echo '<pre><code>';
+echo "Length: " . $htmlLength . "\n";
 echo htmlspecialchars(print_r($_POST, true));
 die('</code></pre>');

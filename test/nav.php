@@ -2,6 +2,8 @@
     <li class="list-inline-item dropdown">
         <a class="link-light dropdown-toggle" href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false">Các ví dụ</a>
         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<?php echo NV_BASE_SITEURL ?>test.modal.php">Kiểm tra nội dung soạn thảo trong Modal</a></li>
+            <li><a class="dropdown-item" href="<?php echo NV_BASE_SITEURL ?>test.empty.php">Kiểm tra nhập rỗng nội dung và submit</a></li>
             <li><a class="dropdown-item" href="<?php echo NV_BASE_SITEURL ?>test.p.php">Kiểm tra nội dung bọc bằng thẻ p</a></li>
             <li><a class="dropdown-item" href="<?php echo NV_BASE_SITEURL ?>test.iframe.php">Plugin iframe</a></li>
         </ul>
