@@ -1,2 +1,11 @@
 import coreTranslations from 'ckeditor5/translations/ru.js';
-window.CKEDITOR_TRANSLATIONS = coreTranslations;
+import nvboxTranslations from '@nukeviet/ckeditor5-nvbox/translations/ru.js';
+import nvmediaTranslations from '@nukeviet/ckeditor5-nvmedia/translations/ru.js';
+
+import { mergeTranslations } from '../utils/mergeTranslations.js';
+
+window.CKEDITOR_TRANSLATIONS = mergeTranslations(
+  coreTranslations,
+  nvboxTranslations,
+  nvmediaTranslations
+);

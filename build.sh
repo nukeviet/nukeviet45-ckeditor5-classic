@@ -15,58 +15,29 @@ DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
 cd "$DIR/../"
 DIR_PATH=$PWD
 
-cd "$DIR_PATH/ckeditor5-nvbox"
-npm run build
-if [[ $? > 0 ]]; then
-  echo "Build NVBox error!!!"
-  exit
-fi
+# Build các plugin cần thiết
+PLUGINS=("ckeditor5-nvbox" "ckeditor5-nvmedia")
+for plugin in "${PLUGINS[@]}"; do
+  cd "$DIR_PATH/$plugin"
+  npm run prepare
+  if [[ $? > 0 ]]; then
+    echo "Prepare $plugin error!!!"
+    exit
+  fi
+done
 
-cd "$DIR_PATH/ckeditor5-nvmedia"
-npm run build
-if [[ $? > 0 ]]; then
-  echo "Build NVMedia error!!!"
-  exit
-fi
+# Chép sang
+PLUGINS_TO_COPY=("nvbox" "nvmedia")
+for plugin in "${PLUGINS_TO_COPY[@]}"; do
+  rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-$plugin/dist"
+  mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-$plugin/dist"
+  cp -R "$DIR_PATH/ckeditor5-$plugin/dist/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-$plugin/"
+done
 
-# Xử lý plugin nvbox
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
-
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/lang"
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/src"
-
-cp -R "$DIR_PATH/ckeditor5-nvbox/lang/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/"
-cp -R "$DIR_PATH/ckeditor5-nvbox/src/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvbox/"
-
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.js.map" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvbox/src" -name "*.d.ts" -type f | xargs /bin/rm -f
-
-# Xử lý plugin nvmedia
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/lang"
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/src"
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/typings"
-rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/theme"
-
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/lang"
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/src"
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/typings"
-mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/theme"
-
-cp -R "$DIR_PATH/ckeditor5-nvmedia/lang/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/"
-cp -R "$DIR_PATH/ckeditor5-nvmedia/src/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/"
-cp -R "$DIR_PATH/ckeditor5-nvmedia/typings/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/"
-cp -R "$DIR_PATH/ckeditor5-nvmedia/theme/" "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-nvmedia/"
-
-find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.js" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.js.map" -type f | xargs /bin/rm -f
-find "$DIR_PATH/ckeditor5-nvmedia/src" -name "*.d.ts" -type f | xargs /bin/rm -f
-
+# Build trình soạn thảo
 cd "$DIR_PATH/nukeviet45-ckeditor5-classic/"
 npm run build
 if [[ $? > 0 ]]; then
   echo "Build CKEditor error!!!"
   exit
 fi
-curl -k https://raw.githubusercontent.com/ckeditor/ckeditor5/master/LICENSE.md > "$DIR_PATH/nukeviet45-ckeditor5-classic/dist/LICENSE.md"

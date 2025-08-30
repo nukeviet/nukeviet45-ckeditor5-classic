@@ -70,8 +70,14 @@ import {
 	Underline,
 	WordCount
 } from 'ckeditor5';
+
+// CSS
 import 'ckeditor5/ckeditor5.css';
+import '@nukeviet/ckeditor5-nvmedia/index.css';
+
+// Plugin của NukeViet
 import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
+import { NVBox } from '@nukeviet/ckeditor5-nvbox';
 
 const editorConfig = {
 	toolbar: {
@@ -193,6 +199,7 @@ const editorConfig = {
 		TextTransformation,
 		Underline,
 		WordCount,
+		NVBox,
 		NVMedia,
 		NVMediaInsert
 	],

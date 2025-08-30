@@ -3,13 +3,12 @@
   "author": "VINADES.,JSC",
   "description": "A custom CKEditor 5 build for NukeViet CMS.",
   "version": "5.0.00",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "GPL-2.0-or-later",
   "private": true,
   "main": "./src/main.js",
   "dependencies": {
     "@nukeviet/ckeditor5-nvbox": "github:nukeviet/ckeditor5-nvbox",
     "@nukeviet/ckeditor5-nvmedia": "github:nukeviet/ckeditor5-nvmedia",
-    "@nukeviet/ckeditor5-nvtools": "github:nukeviet/ckeditor5-nvtools",
     "ckeditor5": "46.0.2"
   },
   "devDependencies": {
