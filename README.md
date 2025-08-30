@@ -28,10 +28,9 @@ npm install
 ## Build
 
 - Tại thư mục nukeviet45-ckeditor5-classic xác định được file build.sh
-- Để build nhanh phục vụ test chạy `bash build.sh dev`
-- Để build sử dụng chạy `bash build.sh`. Chạy chậm hơn gấp đôi
+- Để build chạy `bash build.sh`
 
-Sau khi build thành công thì thư mục `nukeviet45-ckeditor5-classic/build` sẽ chứa 1 file js và 1 file thư mục language. Nó chính là trình soạn thảo sẽ dùng.
+Sau khi build thành công thì thư mục `nukeviet45-ckeditor5-classic/dist` sẽ chứa 1 file ckeditor.css, 1 file ckeditor.js và 1 thư mục language. Nó chính là trình soạn thảo sẽ dùng.
 
 Nếu bạn chạy trên localhost hoặc hosting có thể test bản build bằng cách vào http://localhost/thu-muc/nukeviet45-ckeditor5-classic/test/ để chạy test thử nghiệm trình soạn thảo.
 
@@ -42,8 +41,7 @@ Tóm tắt lại cần:
 
 - Đọc mục `MINOR BREAKING CHANGES` trong bản phát hành ([Ví dụ bản này](https://github.com/ckeditor/ckeditor5/releases/tag/v41.1.0)) để xác định xem cần sửa gì cho NVBox và các plugin phát triển của NukeViet không.
 - Chỉnh sửa NVBox và các plugin nếu cần thiết
-- Sửa phiên bản `dependencies` trong package.json của kho code này và cả nvbox, nvmedia lên bản mới.
-- Đối chiếu https://github.com/ckeditor/ckeditor5/blob/master/package.json với package.json ở kho này xem cần bổ sung chỉnh sửa thêm bớt thư viện nào
+- Sửa phiên bản `dependencies` trong package.json của kho code này và `peerDependencies` của kho nvbox, nvmedia lên bản mới.
 - Trong thư mục `nukeviet45-ckeditor5-classic` chạy: 
 
 ```bash
