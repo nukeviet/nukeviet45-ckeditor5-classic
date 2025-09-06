@@ -9,6 +9,7 @@
   "dependencies": {
     "@nukeviet/ckeditor5-nvbox": "github:nukeviet/ckeditor5-nvbox",
     "@nukeviet/ckeditor5-nvmedia": "github:nukeviet/ckeditor5-nvmedia",
+    "@nukeviet/ckeditor5-nviframe": "github:nukeviet/ckeditor5-nviframe",
     "ckeditor5": "46.0.2"
   },
   "devDependencies": {

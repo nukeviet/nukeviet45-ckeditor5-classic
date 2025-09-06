@@ -74,10 +74,12 @@ import {
 // CSS
 import 'ckeditor5/ckeditor5.css';
 import '@nukeviet/ckeditor5-nvmedia/index.css';
+import '@nukeviet/ckeditor5-nviframe/index.css';
 
 // Plugin của NukeViet
 import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
 import { NVBox } from '@nukeviet/ckeditor5-nvbox';
+import { NVIframe, NVIframeInsert } from '@nukeviet/ckeditor5-nviframe';
 
 const editorConfig = {
 	toolbar: {
@@ -92,6 +94,7 @@ const editorConfig = {
 			'nvmediaInsert',
 			'nvbox',
 			'insertTable',
+			'nviframeInsert',
 			'code',
 			'codeBlock',
 			'horizontalLine',
@@ -199,6 +202,8 @@ const editorConfig = {
 		TextTransformation,
 		Underline,
 		WordCount,
+		NVIframe,
+		NVIframeInsert,
 		NVBox,
 		NVMedia,
 		NVMediaInsert
