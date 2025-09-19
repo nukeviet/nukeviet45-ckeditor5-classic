@@ -14,7 +14,7 @@ define('NV_ROOTDIR', pathinfo(str_replace(DIRECTORY_SEPARATOR, '/', __FILE__), P
 
 require NV_ROOTDIR . '/mainfile.php';
 
-$bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/news.html'));
+$bodyhtml = htmlspecialchars(file_get_contents(NV_ROOTDIR . '/iframe.html'));
 $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 
 ?>
@@ -46,7 +46,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 				<div class="editor-container">
 					<form method="post" action="post.php">
 						<div class="mb-3">
-							<textarea class="editor form-control" rows="10" name="bodyhtml">Nội dung kiểm tra</textarea>
+							<textarea class="editor form-control" rows="10" name="bodyhtml"><?php echo $bodyhtml; ?></textarea>
 						</div>
 						<div class="text-center">
 							<button type="submit" class="btn btn-primary">Submit</button>
