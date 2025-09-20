@@ -304,7 +304,16 @@ const editorConfig = {
 	table: {
 		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
 	},
-	updateSourceElementOnDestroy: false
+	updateSourceElementOnDestroy: false,
+	iframe: {
+		attributes: {
+			sandbox: 'allow-scripts allow-same-origin allow-forms allow-presentation allow-popups',
+			allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+			frameborder: '0',
+			referrerpolicy: 'strict-origin-when-cross-origin',
+			allowfullscreen: true
+		}
+	}
 };
 
 ClassicEditor.defaultConfig = editorConfig;
