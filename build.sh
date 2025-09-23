@@ -16,7 +16,7 @@ cd "$DIR/../"
 DIR_PATH=$PWD
 
 # Build các plugin cần thiết
-PLUGINS=("ckeditor5-nvbox" "ckeditor5-nvmedia" "ckeditor5-nviframe")
+PLUGINS=("ckeditor5-nvbox" "ckeditor5-nvmedia" "ckeditor5-nviframe" "ckeditor5-nvdocs")
 for plugin in "${PLUGINS[@]}"; do
   cd "$DIR_PATH/$plugin"
   npm run prepare
@@ -27,7 +27,7 @@ for plugin in "${PLUGINS[@]}"; do
 done
 
 # Chép sang
-PLUGINS_TO_COPY=("nvbox" "nvmedia" "nviframe")
+PLUGINS_TO_COPY=("nvbox" "nvmedia" "nviframe" "nvdocs")
 for plugin in "${PLUGINS_TO_COPY[@]}"; do
   rm -rf "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-$plugin/dist"
   mkdir -p "$DIR_PATH/nukeviet45-ckeditor5-classic/node_modules/@nukeviet/ckeditor5-$plugin/dist"
