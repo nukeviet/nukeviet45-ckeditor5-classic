@@ -11,7 +11,8 @@
     "@nukeviet/ckeditor5-nvmedia": "github:nukeviet/ckeditor5-nvmedia",
     "@nukeviet/ckeditor5-nviframe": "github:nukeviet/ckeditor5-nviframe",
     "@nukeviet/ckeditor5-nvdocs": "github:nukeviet/ckeditor5-nvdocs",
-    "ckeditor5": "46.0.2"
+    "@nukeviet/ckeditor5-nvtools": "github:nukeviet/ckeditor5-nvtools",
+    "ckeditor5": "46.1.1"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
