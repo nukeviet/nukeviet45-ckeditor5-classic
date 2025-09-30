@@ -22,7 +22,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
-		<title>Kiểm tra nhập rỗng nội dung và submit</title>
+		<title>Các chức năng của NVTools</title>
 		<?php include NV_ROOTDIR . '/head.php'; ?>
 	</head>
 	<body data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
@@ -38,7 +38,7 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
 		</header>
 		<div class="container message">
 			<div class="centered mb-4">
-				<h1>Kiểm tra nhập rỗng nội dung và submit</h1>
+				<h1>Các chức năng của NVTools</h1>
 				<p>CKEditor 5 một số phiên bản cũ, khi để trống nội dung soạn thảo và ấn submit thì nó luôn tạo ra 1 thẻ
 					<code>&lt;p&gt;&lt;/p&gt;</code> rỗng như thế. Một số phiên bản mới này thấy lại hết.
 					Tại đây bạn ấn nút Submit bên dưới nếu kết quả gửi đi rỗng là thành công.
