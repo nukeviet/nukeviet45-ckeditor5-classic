@@ -68,7 +68,8 @@ import {
 	TableToolbar,
 	TextTransformation,
 	Underline,
-	WordCount
+	WordCount,
+	SimpleUploadAdapter
 } from 'ckeditor5';
 
 // CSS
@@ -215,7 +216,8 @@ const editorConfig = {
 		NVBox,
 		NVMedia,
 		NVMediaInsert,
-		NVTools
+		NVTools,
+		SimpleUploadAdapter
 	],
 	balloonToolbar: ['undo', 'redo', '|', 'bold', 'italic', '|', 'link', '|', 'bulletedList', 'numberedList'],
 	fontFamily: {
