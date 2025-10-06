@@ -78,6 +78,7 @@ import '@nukeviet/ckeditor5-nvmedia/index.css';
 import '@nukeviet/ckeditor5-nviframe/index.css';
 import '@nukeviet/ckeditor5-nvdocs/index.css';
 import '@nukeviet/ckeditor5-nvtools/index.css';
+import '@nukeviet/ckeditor5-nvbox/index.css';
 
 // Plugin của NukeViet
 import { NVMedia, NVMediaInsert } from '@nukeviet/ckeditor5-nvmedia';
