@@ -71,22 +71,13 @@ $bodyhtml = str_replace('[BASE]', NV_BASE_SITEURL, $bodyhtml);
                         options: {
                             noCache: true
                         }
-                    }
-				})
-				.then(editor => {
-					window.nveditor = window.nveditor || [];
-					window.nveditor[editorId] = editor;
-					if (editor.sourceElement && editor.sourceElement instanceof HTMLTextAreaElement && editor.sourceElement.form) {
-						editor.sourceElement.form.addEventListener('submit', event => {
-							editor.sourceElement.value = editor.getData();
-						});
+                    },
+					nukeviet: {
+						editorId: editorId
 					}
-				})
-				.catch(error => {
+				}).catch(error => {
 					console.error(error);
 				});
-
-				//console.log(window.nveditor);
 			})();
 		</script>
 	</body>
