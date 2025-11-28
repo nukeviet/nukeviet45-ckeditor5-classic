@@ -2,7 +2,7 @@
 
 ## Yêu cầu:
 
-- Node.js 18.0.0+
+- Node.js 24.11.0+
 - npm 5.7.1+
 - git
 - curl
