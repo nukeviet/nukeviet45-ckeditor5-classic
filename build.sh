@@ -27,9 +27,9 @@ fi
 # Build các plugin cần thiết
 for plugin in "${PLUGINS[@]}"; do
   cd "$DIR_PATH/$plugin"
-  npm run prepare
+  npm run build
   if [[ $? > 0 ]]; then
-    echo "Prepare $plugin error!!!"
+    echo "Build $plugin error!!!"
     exit
   fi
 done
