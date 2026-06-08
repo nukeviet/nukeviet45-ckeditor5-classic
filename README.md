@@ -52,6 +52,10 @@ npm install
 
 - Sau đó build.sh để build
 
+## Tạo plugin/package
+
+Hãy dùng cái này để tạo https://www.npmjs.com/package/ckeditor5-package-generator
+
 ## Tích hợp NukeViet
 
 - Giao diện cần có đủ CSS như trong contents.css
