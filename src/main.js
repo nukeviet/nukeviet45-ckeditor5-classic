@@ -44,7 +44,7 @@ import {
 	Paragraph,
 	PasteFromMarkdownExperimental,
 	PasteFromOffice,
-	PlainTableOutput,
+	// PlainTableOutput,
 	PageBreak,
 	RemoveFormat,
 	ShowBlocks,
@@ -186,7 +186,7 @@ const editorConfig = {
 		Paragraph,
 		PasteFromMarkdownExperimental,
 		PasteFromOffice,
-		PlainTableOutput,
+		// PlainTableOutput,
 		RemoveFormat,
 		ShowBlocks,
 		SourceEditing,
@@ -314,7 +314,10 @@ const editorConfig = {
 		}
 	},
 	table: {
-		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties'],
+		tableLayout: {
+			stripFigureFromContentTable: false
+		}
 	},
 	updateSourceElementOnDestroy: false,
 	iframe: {
